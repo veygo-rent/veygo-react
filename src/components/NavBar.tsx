@@ -22,7 +22,7 @@ export default function NavBar() {
                 <ul className={classes.navbarLinks}>
                     <li><Link to="/pricing">Pricing</Link></li>
                     <li><Link to="/locations">Locations</Link></li>
-                    <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/insurance">Insurance</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
                 </ul>
                 <div className={classes.navbarAuth}>

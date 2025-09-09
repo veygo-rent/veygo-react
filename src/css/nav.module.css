@@ -6,9 +6,9 @@
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  position: sticky;
   top: 0;
   z-index: 1000;
+  position: relative;
 }
 
 .navbarLogo a {
@@ -101,15 +101,18 @@
   }
 
   .navContent {
-    display: none;
+    display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 0;
     align-items: flex-start;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-in-out;
   }
 
   .navContent.show {
-    display: flex;
+    max-height: 500px;
   }
 
   .navbarLinks {
@@ -119,16 +122,21 @@
     align-items: flex-start;
   }
 
+  .navbarLinks:nth-child(1) {
+      margin-top: 2rem;
+  }
+
   .navbarAuth {
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 1rem;
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
+    margin-left: 0;
   }
 
   .navbarAuth a {
     width: 100%;
-    text-align: left;
+    text-align: center;
   }
 }

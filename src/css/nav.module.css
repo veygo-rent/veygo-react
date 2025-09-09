@@ -18,6 +18,24 @@
   text-decoration: none;
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.navContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.show {
+  display: flex;
+}
+
 .navbarLinks {
   display: flex;
   gap: 1.5rem;
@@ -75,10 +93,30 @@
     align-items: flex-start;
   }
 
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .navContent {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+    align-items: flex-start;
+  }
+
+  .navContent.show {
+    display: flex;
+  }
+
   .navbarLinks {
     flex-direction: column;
     gap: 1rem;
     margin-top: 1rem;
+    align-items: flex-start;
   }
 
   .navbarAuth {
@@ -86,10 +124,11 @@
     gap: 0.5rem;
     margin-top: 1rem;
     width: 100%;
+    align-items: flex-start;
   }
 
   .navbarAuth a {
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
 }

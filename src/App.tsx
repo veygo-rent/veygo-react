@@ -5,6 +5,7 @@ import Footer from "./components/Footer.tsx";
 
 import Home from './pages/Home';
 import About from './pages/About';
+import Privacy from "./pages/Privacy.tsx";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             <Routes>
                 <Route path="/" element={ <Home /> } />
                 <Route path="/about" element={ <About /> } />
+                <Route path="/privacy" element={<Privacy />} />
             </Routes>
             <Footer />
         </>

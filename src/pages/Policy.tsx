@@ -51,7 +51,8 @@ export default function Policy(props: { policyType: PolicyType }) {
                     })
                 });
                 if (!res.ok) {
-                    throw new Error(`HTTP ${res.status}`);
+                    setPolicyContent("No policy content found.");
+                    setPolicyEffectiveDate("Last updated: Never");
                 }
                 const data: {
                     policy_effective_date: string

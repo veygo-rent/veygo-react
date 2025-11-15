@@ -51,7 +51,7 @@ export default function Policy(props: { policyType: PolicyType }) {
                     })
                 });
                 if (!res.ok) {
-                    setPolicyContent("No policy content found.");
+                    setPolicyContent("No policy content found. Please coontact Veygo for assistance.");
                     setPolicyEffectiveDate("Last updated: Never");
                 }
                 const data: {
@@ -62,7 +62,7 @@ export default function Policy(props: { policyType: PolicyType }) {
                     setPolicyContent(data.content);
                     setPolicyEffectiveDate(` Effective on: ${data.policy_effective_date}`);
                 } else {
-                    setPolicyContent("No policy content found.");
+                    setPolicyContent("No policy content found. Please coontact Veygo for assistance.");
                     setPolicyEffectiveDate("Last updated: Never");
                 }
             } catch (err) {

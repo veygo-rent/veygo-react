@@ -53,10 +53,13 @@ export default function Policy(props: { policyType: PolicyType }) {
                 if (!res.ok) {
                     throw new Error(`HTTP ${res.status}`);
                 }
-                const data: { content?: string } = await res.json();
-                if (data && data.content) {
+                const data: {
+                    policy_effective_date: string
+                    content: string
+                } = await res.json();
+                if (data && data.content && data.policy_effective_date) {
                     setPolicyContent(data.content);
-                    setPolicyEffectiveDate(` (Effective on: ${date.toISOString().slice(0, 10)})`);
+                    setPolicyEffectiveDate(` Effective on: ${data.policy_effective_date}`);
                 } else {
                     setPolicyContent("No policy content found.");
                     setPolicyEffectiveDate("Last updated: Never");

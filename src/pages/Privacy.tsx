@@ -1,4 +1,6 @@
 import { useSearchParams } from "react-router";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 export default function Privacy() {
     const [searchParams] = useSearchParams();
@@ -21,10 +23,46 @@ export default function Privacy() {
     } else {
         date = new Date();
     }
+
+    const [policyContent, setPolicyContent] = useState<string>("Loading...");
+
+    useEffect(() => {
+        async function fetchPolicy() {
+            try {
+                // Use GET with query param (backend expects GET)
+                const res = await fetch("https://dev.veygo.rent/api/v1/policy/get", {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ policy_type: "Privacy" })
+                });
+                if (!res.ok) {
+                    throw new Error(`HTTP ${res.status}`);
+                }
+                const data: { content?: string } = await res.json();
+                console.log("Fetched policy:", data);
+                if (data && data.content) {
+                    setPolicyContent(data.content);
+                } else {
+                    setPolicyContent("No policy content found.");
+                }
+            } catch (err) {
+                console.error("Error fetching policy:", err);
+                setPolicyContent("Failed to fetch policy content.");
+            }
+        }
+        fetchPolicy();
+    }, []);
+
     return (
         <div>
             <h1>Privacy Page</h1>
             <h2>The requested date is { date.toISOString().slice(0, 10) }</h2>
+            <div className="markdown-body">
+                <ReactMarkdown>{policyContent}</ReactMarkdown>
+            </div>
         </div>
     );
 }

@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-export default function Privacy() {
+export default function Membership() {
     const [searchParams] = useSearchParams();
     const date_str = searchParams.get('date');
     let date: Date;
@@ -38,7 +38,7 @@ export default function Privacy() {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        policy_type: "Privacy",
+                        policy_type: "Membership",
                         effective_date: date.toISOString().slice(0, 10)
                     })
                 });
@@ -64,7 +64,7 @@ export default function Privacy() {
 
     return (
         <div>
-            <h1>Privacy Policy</h1>
+            <h1>Membership Agreement</h1>
             <h2>{ policyEffectiveDate }</h2>
             <div className="markdown-body">
                 <ReactMarkdown>{policyContent}</ReactMarkdown>

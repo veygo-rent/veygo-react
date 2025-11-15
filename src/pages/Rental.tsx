@@ -25,6 +25,7 @@ export default function Rental() {
     }
 
     const [policyContent, setPolicyContent] = useState<string>("Loading...");
+    const [policyEffectiveDate, setPolicyEffectiveDate] = useState<string>("Loading date...");
 
     useEffect(() => {
         async function fetchPolicy() {
@@ -47,12 +48,15 @@ export default function Rental() {
                 const data: { content?: string } = await res.json();
                 if (data && data.content) {
                     setPolicyContent(data.content);
+                    setPolicyEffectiveDate(` (Effective on: ${date.toISOString().slice(0, 10)})`);
                 } else {
                     setPolicyContent("No policy content found.");
+                    setPolicyEffectiveDate("Last updated: Never");
                 }
             } catch (err) {
                 console.error("Error fetching policy content:", err);
-                setPolicyContent("Failed to fetch policy content.");
+                setPolicyContent("No policy content found.");
+                setPolicyEffectiveDate("Last updated: Never");
             }
         }
         fetchPolicy();
@@ -61,7 +65,7 @@ export default function Rental() {
     return (
         <div>
             <h1>Rental Agreement</h1>
-            <h2>Last update: { date.toISOString().slice(0, 10) }</h2>
+            <h2>{ policyEffectiveDate }</h2>
             <div className="markdown-body">
                 <ReactMarkdown>{policyContent}</ReactMarkdown>
             </div>

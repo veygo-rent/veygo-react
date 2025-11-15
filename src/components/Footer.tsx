@@ -37,7 +37,6 @@ export default function Footer() {
               <li><Link to="/privacy">Privacy Policy</Link></li>
               <li><Link to="/membership">Membership Agreement</Link></li>
               <li><Link to="/rental-agreement">Rental Agreement</Link></li>
-              <li><Link to="/requirements">Rental Requirements</Link></li>
             </ul>
           </section>
         </div>

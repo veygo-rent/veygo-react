@@ -67,7 +67,7 @@ export default function Policy(props: { policyType: PolicyType }) {
                 }
             } catch (err) {
                 console.error("Error fetching policy content:", err);
-                setPolicyContent("No policy content found.");
+                setPolicyContent("No policy content found. Please coontact Veygo for assistance.");
                 setPolicyEffectiveDate("Last updated: Never");
             }
         }

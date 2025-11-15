@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router";
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import ReactMarkdown from "react-markdown";
 
 export type PolicyType = "Rental" | "Membership" | "Privacy";
@@ -35,7 +35,10 @@ export default function Policy(props: { policyType: PolicyType }) {
     const [policyContent, setPolicyContent] = useState<string>("Loading...");
     const [policyEffectiveDate, setPolicyEffectiveDate] = useState<string>("Loading date...");
 
+    const fetched = useRef(false);
     useEffect(() => {
+        if (fetched.current) return;
+        fetched.current = true;
         async function fetchPolicy() {
             try {
                 // Use GET with query param (backend expects GET)

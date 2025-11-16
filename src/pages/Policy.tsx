@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import ReactMarkdown from "react-markdown";
 
 export type PolicyType = "Rental" | "Membership" | "Privacy";

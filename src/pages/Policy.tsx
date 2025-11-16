@@ -35,10 +35,7 @@ export default function Policy(props: { policyType: PolicyType }) {
     const [policyContent, setPolicyContent] = useState<string>("Loading...");
     const [policyEffectiveDate, setPolicyEffectiveDate] = useState<string>("Loading date...");
 
-    const fetched = useRef(false);
     useEffect(() => {
-        if (fetched.current) return;
-        fetched.current = true;
         async function fetchPolicy() {
             try {
                 // Use GET with query param (backend expects GET)

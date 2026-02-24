@@ -10,23 +10,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "crisp-sdk-web": "^1.0.26",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "crisp-sdk-web": "^1.0.27",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "react-markdown": "^10.1.0",
-    "react-router": "^7.9.6"
+    "react-router": "^7.13.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@types/react": "^19.2.5",
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
-    "eslint": "^9.39.1",
+    "@vitejs/plugin-react": "^5.1.4",
+    "eslint": "^10.0.2",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.3.0",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.46.4",
-    "vite": "7.2.2"
+    "typescript-eslint": "^8.56.1",
+    "vite": "7.3.1"
   }
 }

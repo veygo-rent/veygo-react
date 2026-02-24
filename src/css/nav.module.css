@@ -91,18 +91,43 @@
   gap: 0.55rem;
 }
 
-.themeLabel {
-  font-size: 0.84rem;
-  color: var(--text-tertiary);
+.themeGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  min-height: 2.2rem;
+  padding: 0.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface-muted) 78%, transparent);
 }
 
-.themeSelect {
-  min-height: 2rem;
-  border-radius: 0.7rem;
-  border: 1px solid var(--line);
-  padding: 0 0.6rem;
-  background: var(--surface);
+.themeOption {
+  min-height: 1.78rem;
+  padding: 0 0.62rem;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: var(--text-tertiary);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.themeOption:hover {
   color: var(--text-primary);
+}
+
+.themeOptionActive {
+  background: linear-gradient(
+    140deg,
+    color-mix(in srgb, var(--brand-start) 35%, transparent),
+    color-mix(in srgb, var(--brand-end) 30%, transparent)
+  );
+  color: var(--text-primary);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand-end) 35%, transparent);
 }
 
 .primaryButton {
@@ -181,13 +206,18 @@
     flex-wrap: wrap;
     gap: 0.6rem;
     margin-top: 0.4rem;
-  }
-
-  .themeLabel {
     width: 100%;
   }
 
-  .themeSelect,
+  .themeGroup {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .themeOption {
+    flex: 1;
+  }
+
   .primaryButton {
     width: 100%;
   }

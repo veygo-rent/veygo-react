@@ -9,6 +9,12 @@ interface NavBarProps {
   onThemeChange: (mode: ThemeMode) => void;
 }
 
+const themeOptions: Array<{ value: ThemeMode; label: string }> = [
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+  { value: "system", label: "System" },
+];
+
 const navItems = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
@@ -60,20 +66,21 @@ export default function NavBar({ themeMode, onThemeChange }: NavBarProps) {
           </ul>
 
           <div className={classes.actions}>
-            <label className={classes.themeLabel} htmlFor="theme-mode">
-              Theme
-            </label>
-            <select
-              id="theme-mode"
-              className={classes.themeSelect}
-              value={themeMode}
-              onChange={(event) => onThemeChange(event.target.value as ThemeMode)}
-              aria-label="Theme mode"
-            >
-              <option value="light">Light</option>
-              <option value="dark">Dark</option>
-              <option value="system">System</option>
-            </select>
+            <div className={classes.themeGroup} role="group" aria-label="Theme mode">
+              {themeOptions.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  className={`${classes.themeOption} ${
+                    themeMode === option.value ? classes.themeOptionActive : ""
+                  }`}
+                  onClick={() => onThemeChange(option.value)}
+                  aria-pressed={themeMode === option.value}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
             <Link to="/" className={classes.primaryButton} onClick={() => setIsOpen(false)}>
               Reserve now
             </Link>

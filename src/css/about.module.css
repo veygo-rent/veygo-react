@@ -1,0 +1,102 @@
+.page {
+  max-width: 1180px;
+  margin: 1.2rem auto 0;
+  padding: 0 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.intro {
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(1.2rem, 2.5vw, 2.1rem);
+  display: grid;
+  gap: 0.9rem;
+  animation: lift 0.55s ease;
+}
+
+.intro span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--text-tertiary);
+}
+
+.intro h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.4vw, 3rem);
+  line-height: 1.1;
+  color: var(--text-primary);
+  max-width: 22ch;
+}
+
+.intro p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 58ch;
+}
+
+.linkButton {
+  justify-self: flex-start;
+  min-height: 2.5rem;
+  border-radius: 0.8rem;
+  padding: 0.58rem 0.9rem;
+  text-decoration: none;
+  font-weight: 700;
+  color: #042436;
+  background: linear-gradient(130deg, var(--brand-start), var(--brand-end));
+  box-shadow: 0 10px 22px rgba(57, 159, 230, 0.31);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 0.8rem;
+}
+
+.cards article {
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow: var(--shadow-soft);
+  padding: 1rem;
+}
+
+.cards h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.cards p {
+  margin: 0.6rem 0 0;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+@keyframes lift {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .page {
+    padding: 0 1rem;
+  }
+}

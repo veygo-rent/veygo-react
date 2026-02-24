@@ -1,55 +1,58 @@
-import { Link } from 'react-router';
+import { Link } from "react-router";
 
-import styles from '../css/footer.module.css';
+import styles from "../css/footer.module.css";
+
+const footerColumns = [
+  {
+    title: "Explore",
+    links: [
+      { to: "/", label: "Home" },
+      { to: "/about", label: "Company" },
+      { to: "/membership", label: "Membership" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { to: "/privacy", label: "Privacy Policy" },
+      { to: "/membership", label: "Membership Agreement" },
+      { to: "/rental-agreement", label: "Rental Agreement" },
+    ],
+  },
+];
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <nav aria-label="Footer navigation" className={styles.footerNav}>
-        <div className={styles.footerGrid}>
-          {/* About Veygo */}
-          <section aria-labelledby="footer-about">
-            <h3 id="footer-about" className={styles.footerSectionTitle}>About Veygo</h3>
-            <ul className={styles.footerList}>
-              <li><Link to="/investors">Investor Relations</Link></li>
-              <li><Link to="/careers">Careers</Link></li>
-              <li><Link to="/leadership">Leadership</Link></li>
-              <li><Link to="/press">Press</Link></li>
-            </ul>
-          </section>
+      <div className={styles.content}>
+        <section className={styles.brandPanel}>
+          <h2>Veygo</h2>
+          <p>
+            Modern car rental made simple. Book, unlock, and drive with transparent pricing and
+            policies that stay easy to read.
+          </p>
+        </section>
 
-          {/* Reward Program */}
-          <section aria-labelledby="footer-rewards">
-            <h3 id="footer-rewards" className={styles.footerSectionTitle}>Reward Program</h3>
-            <ul className={styles.footerList}>
-              <li><Link to="/memberships">Memberships</Link></li>
-              <li><Link to="/subscriptions">Subscriptions</Link></li>
-              <li><Link to="/go-points">Go Points</Link></li>
-              <li><Link to="/merchant-discounts">Merchant Discounts</Link></li>
-            </ul>
-          </section>
+        <nav className={styles.columns} aria-label="Footer navigation">
+          {footerColumns.map((column) => (
+            <section key={column.title}>
+              <h3>{column.title}</h3>
+              <ul>
+                {column.links.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </nav>
+      </div>
 
-          {/* Policies */}
-          <section aria-labelledby="footer-policies">
-            <h3 id="footer-policies" className={styles.footerSectionTitle}>Policies</h3>
-            <ul className={styles.footerList}>
-              <li><Link to="/terms">Terms of Service</Link></li>
-              <li><Link to="/privacy">Privacy Policy</Link></li>
-              <li><Link to="/membership">Membership Agreement</Link></li>
-              <li><Link to="/rental-agreement">Rental Agreement</Link></li>
-            </ul>
-          </section>
-        </div>
-
-        <div className={styles.footerBottom}>
-          <small className={styles.footerSmall}>
-            © {new Date().getFullYear()} Veygo. All rights reserved.
-          </small>
-          <small className={styles.footerSmall}>
-            Need help? <Link to="/support">Contact Support</Link>
-          </small>
-        </div>
-      </nav>
+      <div className={styles.bottom}>
+        <small>© {new Date().getFullYear()} Veygo. All rights reserved.</small>
+        <small>Support: hello@veygo.rent</small>
+      </div>
     </footer>
   );
 }
